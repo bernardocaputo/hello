@@ -10,10 +10,9 @@ defmodule Hello.UserController do
 
   def create(conn, %{"user" => params}) do
     changeset = User.changeset(%User{}, params)
-    changeset
     |> Repo.insert()
     users = Repo.all(User)
-    render conn, "index.html", users: users
+    redirect conn, to: "/users"
   end
 
   def index(conn, _params) do
