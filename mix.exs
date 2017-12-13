@@ -20,7 +20,7 @@ defmodule Hello.Mixfile do
   def application do
     [
       mod: {Hello, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger, :comeonin]
     ]
   end
 
@@ -40,6 +40,7 @@ defmodule Hello.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
+      {:comeonin, "~> 2.0"},
       {:cowboy, "~> 1.0"}
     ]
   end
