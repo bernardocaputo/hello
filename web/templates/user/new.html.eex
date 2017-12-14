@@ -10,4 +10,5 @@
 
 <%= submit "Create User", class: "btn btn-primary" %>
 
+<%= inspect @conn %>
 <% end %>

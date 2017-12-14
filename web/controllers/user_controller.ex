@@ -9,10 +9,17 @@ defmodule Hello.UserController do
   end
 
   def create(conn, %{"user" => params}) do
-    changeset = User.changeset(%User{}, params)
-    |> Repo.insert()
-    users = Repo.all(User)
-    redirect conn, to: "/users"
+    changeset = User.registration_changeset(%User{}, params)
+    case Repo.insert(changeset) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "#{user.name} created!")
+        |> redirect(to: user_path(conn, :index))
+      {:error, _} ->
+        conn
+        |> put_flash(:info, "problemas na criação!")
+        |> redirect(to: user_path(conn, :new))
+    end
   end
 
   def index(conn, _params) do

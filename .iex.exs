@@ -1,0 +1,1 @@
+alias Hello.{Repo, User}
