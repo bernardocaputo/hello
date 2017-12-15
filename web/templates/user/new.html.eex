@@ -9,6 +9,6 @@
 </div>
 
 <%= submit "Create User", class: "btn btn-primary" %>
-
+<br>
 <%= inspect @conn %>
 <% end %>
