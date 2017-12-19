@@ -7,6 +7,7 @@ defmodule Hello.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Hello.Auth, repo: Hello.Repo
   end
 
   pipeline :api do
@@ -18,7 +19,7 @@ defmodule Hello.Router do
 
     get "/hello/:name", HelloController, :world
     get "/", PageController, :index
-    resources "/users", UserController, only: [:index, :new, :create, :delete, :update]
+    resources "/users", UserController, only: [:index, :new, :create, :delete, :update, :edit]
   end
 
   # Other scopes may use custom stacks.
