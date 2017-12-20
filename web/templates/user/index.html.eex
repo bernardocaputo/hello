@@ -2,6 +2,7 @@
   <%= for user <- @users do %>
   <tr>
     <td> <%= user.name %> </td>
+    <td> <%= link "edit", to: "/users/#{user.id}/edit" %> </td>
   </tr>
   <% end %>
 </table>
