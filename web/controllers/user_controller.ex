@@ -10,14 +10,17 @@ defmodule Hello.UserController do
   end
 
   def edit(conn, %{"id" => user_id}) do
-    edituser = Repo.get!(User, user_id)
-    changeset = User.changeset(%User{})
-    render conn, "edit.html", changeset: changeset, edituser: edituser
+    user = Repo.get!(User, user_id)
+    changeset = User.changeset(user)
+    render conn, "edit.html", changeset: changeset, user: user
   end
 
-  def update(conn, %{"user" => user_params}, user_id) do
+  def update(conn, %{"user" => user_params, "id" => user_id}) do
+    require IEx
+    IEx.pry()
     user = Repo.get!(User, user_id)
-    case Repo.update(user, user_params) do
+    changeset = User.changeset(user, user_params)
+    case Repo.update(changeset) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "#{user.name} edited!")
