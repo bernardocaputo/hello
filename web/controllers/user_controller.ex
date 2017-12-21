@@ -1,6 +1,6 @@
 defmodule Hello.UserController do
   use Hello.Web, :controller
-  # plug :authenticate when action in [:index]
+  plug :authenticate when action in [:index]
   alias Hello.Repo
   alias Hello.User
 
@@ -15,7 +15,7 @@ defmodule Hello.UserController do
     render conn, "edit.html", changeset: changeset, user: user
   end
 
-  def update(conn, %{"user" => user_params, "id" => user_id}) do
+  def update(conn, %{"usser" => user_params, "id" => user_id}) do
     require IEx
     IEx.pry()
     user = Repo.get!(User, user_id)
@@ -38,6 +38,7 @@ defmodule Hello.UserController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
+        |> Hello.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
         |> redirect(to: user_path(conn, :index))
       {:error, _} ->
