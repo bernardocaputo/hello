@@ -1,7 +1,6 @@
 defmodule Hello.SessionController do
   use Hello.Web, :controller
   alias Hello.Repo
-  alias Hello.User
 
   def new(conn, _params) do
     render conn, "new.html"

@@ -5,7 +5,6 @@ defmodule Hello.Auth do
   def login_by_name_and_pass(conn, name_given, password_given, opts) do
     repo = Keyword.fetch!(opts, :repo)
     user = repo.get_by(Hello.User, name: name_given)
-
     cond do
       user && checkpw(password_given, user.password_hash) ->
         {:ok, login(conn, user)}
@@ -34,7 +33,7 @@ defmodule Hello.Auth do
     |> configure_session(renew: true)
   end
 
-  def logout(conn, _) do
+  def logout(conn) do
     configure_session(conn, drop: true)
   end
 end

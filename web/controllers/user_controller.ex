@@ -32,7 +32,6 @@ defmodule Hello.UserController do
     end
   end
 
-
   def create(conn, %{"user" => params}) do
     changeset = User.registration_changeset(%User{}, params)
     case Repo.insert(changeset) do
@@ -63,5 +62,4 @@ defmodule Hello.UserController do
       |> halt()
     end
   end
-
 end
