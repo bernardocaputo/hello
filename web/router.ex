@@ -20,7 +20,7 @@ defmodule Hello.Router do
     get "/hello/:name", HelloController, :world
     get "/", PageController, :index
     resources "/users", UserController, only: [:index, :new, :create, :delete, :update, :edit]
-    resources "/sessions", SessionController, only: [:new, :create, :destroy]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.
