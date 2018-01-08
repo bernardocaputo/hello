@@ -17,7 +17,7 @@ defmodule Hello.Auth do
   end
 
   def init(opts) do
-    Keyword.fetch(opts, :repo)
+    Keyword.fetch!(opts, :repo)
   end
 
   def call(conn, repo) do
