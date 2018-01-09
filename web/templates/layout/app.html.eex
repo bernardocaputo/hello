@@ -15,7 +15,9 @@
     <div class="container">
       <div class="header">
         <ol class="breadcrumb text-right">
+          <li> <%= link "home", to: page_path(@conn, :index) %></li>
           <%= if @current_user do %>
+            <li> <%= link "index", to: user_path(@conn, :index) %></li>
             <li> <%= @current_user.name %></li>
             <li> <%= link "Log out", to: session_path(@conn, :delete, @current_user), method: "delete" %> </li>
           <% else %>
