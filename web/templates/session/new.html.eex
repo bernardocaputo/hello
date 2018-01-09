@@ -10,5 +10,4 @@
 
 <%= submit "Log in", class: "btn btn-primary" %>
 <br>
-<%= inspect @conn %>
 <% end %>
