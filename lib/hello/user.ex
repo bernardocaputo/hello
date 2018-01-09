@@ -5,7 +5,7 @@ defmodule Hello.User do
   alias Hello.Repo
 
   schema "users" do
-    field :name, :string
+    field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
 
@@ -15,9 +15,9 @@ defmodule Hello.User do
   @doc false
   def changeset(user, attrs \\ %{}) do
     user
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
-    |> validate_length(:name, min: 3, max: 20)
+    |> cast(attrs, [:email])
+    |> validate_required([:email])
+    |> validate_length(:email, min: 3, max: 20)
     # |> put_pass_hash()
   end
 

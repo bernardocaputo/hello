@@ -17,7 +17,7 @@ defmodule Hello.Router do
   scope "/", Hello do
     pipe_through :browser # Use the default browser stack
 
-    get "/hello/:name", HelloController, :world
+    get "/hello/:email", HelloController, :world
     get "/", PageController, :index
     resources "/users", UserController, only: [:index, :new, :create, :delete, :update, :edit]
     resources "/sessions", SessionController, only: [:new, :create, :delete]

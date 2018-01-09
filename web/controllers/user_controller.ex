@@ -23,7 +23,7 @@ defmodule Hello.UserController do
     case Repo.update(changeset) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "#{user.name} edited!")
+        |> put_flash(:info, "#{user.email} edited!")
         |> redirect(to: user_path(conn, :index))
       {:error, _} ->
         conn
@@ -38,7 +38,7 @@ defmodule Hello.UserController do
       {:ok, user} ->
         conn
         |> Hello.Auth.login(user)
-        |> put_flash(:info, "#{user.name} created!")
+        |> put_flash(:info, "#{user.email} created!")
         |> redirect(to: user_path(conn, :index))
       {:error, _} ->
         conn

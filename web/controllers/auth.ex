@@ -2,9 +2,9 @@ defmodule Hello.Auth do
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
-  def login_by_name_and_pass(conn, name_given, password_given, opts) do
+  def login_by_email_and_pass(conn, email_given, password_given, opts) do
     repo = Keyword.fetch!(opts, :repo)
-    user = repo.get_by(Hello.User, name: name_given)
+    user = repo.get_by(Hello.User, email: email_given)
     cond do
       user && checkpw(password_given, user.password_hash) ->
         {:ok, login(conn, user)}

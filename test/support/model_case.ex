@@ -40,7 +40,7 @@ defmodule Hello.ModelCase do
 
   ## Examples
 
-  Given a User schema that lists `:name` as a required field and validates
+  Given a User schema that lists `:email` as a required field and validates
   `:password` to be safe, it would return:
 
       iex> errors_on(%User{}, %{password: "password"})

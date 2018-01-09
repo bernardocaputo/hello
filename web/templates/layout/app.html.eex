@@ -18,7 +18,7 @@
           <li> <%= link "home", to: page_path(@conn, :index) %></li>
           <%= if @current_user do %>
             <li> <%= link "index", to: user_path(@conn, :index) %></li>
-            <li> <%= @current_user.name %></li>
+            <li> <%= @current_user.email %></li>
             <li> <%= link "Log out", to: session_path(@conn, :delete, @current_user), method: "delete" %> </li>
           <% else %>
             <li><%= link "Register", to: user_path(@conn, :new) %></li> <li><%= link "Log in", to: session_path(@conn, :new) %></li>

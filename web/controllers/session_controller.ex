@@ -6,15 +6,15 @@ defmodule Hello.SessionController do
     render conn, "new.html"
   end
 
-  def create(conn, %{"session" => %{"name" => name, "password" => password}}) do
-    case Hello.Auth.login_by_name_and_pass(conn, name, password, repo: Repo) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+    case Hello.Auth.login_by_email_and_pass(conn, email, password, repo: Repo) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome to our app!")
         |> redirect(to: user_path(conn, :index))
       {:error, conn} ->
         conn
-        |> put_flash(:error, "Invalid name/password combination")
+        |> put_flash(:error, "Invalid email/password combination")
         |> redirect(to: session_path(conn, :new))
     end
 
